@@ -1,14 +1,53 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+    <ion-title>FinAppcije</ion-title>
   </ion-navbar>
+
+  <!--<ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item nopadding>
+          <ion-label>From:</ion-label>
+          <ion-datetime displayFormat="MMM/YYYY" pickerFormat="MMM/YYYY"></ion-datetime>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item nopadding>
+          <ion-label>To:</ion-label>
+          <ion-datetime displayFormat="MMM/YYYY" pickerFormat="MMM/YYYY"></ion-datetime>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item nopadding>
+          <ion-label>Types</ion-label>
+          <ion-select [(ngModel)]="selectedRecordTypes">
+            <ion-option *ngFor="let recordType of recordTypes" value="{{recordType}}">{{recordType}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item nopadding>
+          <ion-label>Categories</ion-label>
+          <ion-select [(ngModel)]="selectedCategories">
+            <ion-option *ngFor="let category of categories" value="{{category}}">{{category}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>-->
+
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
-</ion-content>
+<ion-fab right top>
+  <button ion-fab (click)="openAddRecordPage()">
+    <ion-icon name="add"></ion-icon>
+  </button>
+</ion-fab>
+
+<ion-tabs>
+  <ion-tab [root]="recordsTabRoot" tabTitle="Records" tabIcon="list"></ion-tab>
+  <ion-tab [root]="chartsTabRoot" tabTitle="Charts" tabIcon="stats"></ion-tab>
+</ion-tabs>
