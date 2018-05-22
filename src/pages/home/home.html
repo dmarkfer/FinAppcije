@@ -1,4 +1,9 @@
-<!--<ion-grid>
+<ion-header>
+  <ion-navbar>
+    <ion-title>FinAppcije</ion-title>
+  </ion-navbar>
+
+  <!--<ion-grid>
     <ion-row>
       <ion-col>
         <ion-item nopadding>
@@ -34,11 +39,14 @@
     </ion-row>
   </ion-grid>-->
 
-<ion-fab right top>
+</ion-header>
+
+<ion-fab right bottom style="margin-bottom: 60px">
   <button ion-fab (click)="openAddRecordPage()">
     <ion-icon name="add"></ion-icon>
   </button>
 </ion-fab>
+
 
 <ion-tabs>
   <ion-tab [root]="recordsTabRoot" tabTitle="Records" tabIcon="list"></ion-tab>

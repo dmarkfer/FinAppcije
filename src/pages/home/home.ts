@@ -51,9 +51,9 @@ export class HomePage {
       location: 'default'
     }).then((db: SQLiteObject) => {
 
-      db.executeSql('CREATE TABLE IF NOT EXISTS record(rowid INTEGER PRIMARY KEY, date TEXT, type TEXT, description TEXT, amount TEXT)', {})
+      db.executeSql('CREATE TABLE IF NOT EXISTS record(rowid INTEGER PRIMARY KEY, date TEXT, type TEXT, category TEXT, description TEXT, amount TEXT)', {})
         .catch(e => console.log(e));
-      
+
       db.executeSql('SELECT * FROM record ORDER BY rowid DESC', {})
         .then(res => {
           this.records = [];
@@ -62,6 +62,7 @@ export class HomePage {
               rowid: res.rows.item(i).rowid,
               date: res.rows.item(i).date,
               type: res.rows.item(i).type,
+              category: res.rows.item(i).category,
               description: res.rows.item(i).description,
               amount: res.rows.item(i).amount
             });
@@ -69,7 +70,7 @@ export class HomePage {
         })
         .catch(e => console.log(e));
 
-      
+
     });
   }
 

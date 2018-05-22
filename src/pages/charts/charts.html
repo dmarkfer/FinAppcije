@@ -1,7 +1,43 @@
 <ion-header>
-    <ion-navbar>
-        <ion-title>FinAppcije</ion-title>
-    </ion-navbar>
+  <ion-navbar>
+    <ion-title>FinAppcije</ion-title>
+  </ion-navbar>
 </ion-header>
 
-<ion-content>dva</ion-content>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col><h4 padding-left="15px">Type</h4></ion-col>
+      <ion-col><h4 padding-left="15px">Category</h4></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6>
+        <ion-select [(ngModel)]="dataType" style="max-width: unset" (ionChange)="getNewData()">
+          <ion-option value="income">Income</ion-option>
+          <ion-option value="expense">Expense</ion-option>
+        </ion-select>
+      </ion-col>
+      <ion-col col-6>
+        <ion-select [(ngModel)]="dataCategory" style="max-width: unset" (ionChange)="getNewData()">
+          <ion-option value="all">All categories</ion-option>
+          <ion-option *ngFor="let category of categories" value="{{category.rowid}}">{{category.name}}</ion-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <div style="display: block; max-width: unset; width: 100%" *ngIf="showChart">
+        <canvas baseChart
+                #baseChart
+                [data]="chartData"
+                [labels]="chartLabels"
+                chartType="doughnut"
+                ></canvas>
+      </div>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <h4 text-right right item-end padding-right="50px" padding-top="50px">Total: {{totalAmount}}</h4>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

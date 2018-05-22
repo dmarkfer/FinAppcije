@@ -11,6 +11,8 @@ import { HomePage } from '../pages/home/home';
 import { RecordsPage } from '../pages/records/records';
 import { ChartsPage } from '../pages/charts/charts';
 import { AddRecordPage } from '../pages/add-record/add-record';
+import { MockDataProvider } from '../providers/mock-data/mock-data';
+import {ChartsModule} from "ng2-charts";
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { AddRecordPage } from '../pages/add-record/add-record';
   ],
   imports: [
     BrowserModule,
+    ChartsModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -36,7 +39,8 @@ import { AddRecordPage } from '../pages/add-record/add-record';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    SQLite
+    SQLite,
+    MockDataProvider
   ]
 })
 export class AppModule {}
