@@ -1,3 +1,5 @@
+import { SQLite } from '@ionic-native/sqlite';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -8,13 +10,15 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { RecordsPage } from '../pages/records/records';
 import { ChartsPage } from '../pages/charts/charts';
+import { AddRecordPage } from '../pages/add-record/add-record';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     RecordsPage,
-    ChartsPage
+    ChartsPage,
+    AddRecordPage
   ],
   imports: [
     BrowserModule,
@@ -25,12 +29,14 @@ import { ChartsPage } from '../pages/charts/charts';
     MyApp,
     HomePage,
     RecordsPage,
-    ChartsPage
+    ChartsPage,
+    AddRecordPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    SQLite
   ]
 })
 export class AppModule {}

@@ -1,14 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 
 import { RecordsPage } from '../records/records';
 import { ChartsPage } from '../charts/charts';
+import { AddRecordPage } from '../add-record/add-record';
 
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage implements OnInit {
+export class HomePage {
 
   recordsTabRoot = RecordsPage;
   chartsTabRoot = ChartsPage;
@@ -21,13 +24,19 @@ export class HomePage implements OnInit {
   selectedCategories: any;
 
 
-  constructor() {
-
+  constructor(
+    public navCtrl: NavController,
+    private sqlite: SQLite
+  ) {
   }
 
 
-  ngOnInit(): void {
+  /*ngOnInit(): void {
     this.selectedRecordTypes = this.recordTypes[3];
+  }*/
+
+  openAddRecordPage(): void {
+    this.navCtrl.push(AddRecordPage);
   }
 
 }

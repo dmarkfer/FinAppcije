@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Add Record</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <form (ngSubmit)="saveData()">
+    <ion-item>
+      <ion-label>Date</ion-label>
+      <ion-datetime displayFormat="MMM/D/YYYY" pickerFormat="MMMM/D/YYYY" [(ngModel)]="data.date" name="date" required></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Type</ion-label>
+      <ion-select [(ngModel)]="data.type" name="type" required>
+        <ion-option value="Income">Income</ion-option>
+        <ion-option value="Expense">Expense</ion-option>
+      </ion-select>
+    </ion-item>
+  </form>
+</ion-content>
