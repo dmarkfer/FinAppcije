@@ -16,6 +16,8 @@ export class HomePage {
   recordsTabRoot = RecordsPage;
   chartsTabRoot = ChartsPage;
 
+  records: any = [];
+
 
   recordTypes: any = [ 'Income', 'Expense', 'Savings', 'All' ];
   selectedRecordTypes: any;
@@ -34,6 +36,42 @@ export class HomePage {
   /*ngOnInit(): void {
     this.selectedRecordTypes = this.recordTypes[3];
   }*/
+
+  ionViewDidLoad(): void {
+    this.getRecords();
+  }
+
+  ionViewWillEnter(): void {
+    this.getRecords();
+  }
+
+  getRecords(): void {
+    this.sqlite.create({
+      name: 'finappcije.db',
+      location: 'default'
+    }).then((db: SQLiteObject) => {
+
+      db.executeSql('CREATE TABLE IF NOT EXISTS record(rowid INTEGER PRIMARY KEY, date TEXT, type TEXT, description TEXT, amount TEXT)', {})
+        .catch(e => console.log(e));
+      
+      db.executeSql('SELECT * FROM record ORDER BY rowid DESC', {})
+        .then(res => {
+          this.records = [];
+          for(let i=0; i<res.rows.length; ++i) {
+            this.records.push({
+              rowid: res.rows.item(i).rowid,
+              date: res.rows.item(i).date,
+              type: res.rows.item(i).type,
+              description: res.rows.item(i).description,
+              amount: res.rows.item(i).amount
+            });
+          }
+        })
+        .catch(e => console.log(e));
+
+      
+    });
+  }
 
   openAddRecordPage(): void {
     this.navCtrl.push(AddRecordPage);
