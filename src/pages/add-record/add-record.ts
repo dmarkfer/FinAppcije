@@ -10,6 +10,9 @@ import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 })
 export class AddRecordPage {
 
+  data = { date:"", type:"", description:"", amount:0 };
+
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,

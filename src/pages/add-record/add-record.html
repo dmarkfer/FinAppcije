@@ -5,7 +5,7 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content padding>
   <form (ngSubmit)="saveData()">
     <ion-item>
       <ion-label>Date</ion-label>
@@ -19,5 +19,6 @@
         <ion-option value="Expense">Expense</ion-option>
       </ion-select>
     </ion-item>
+    <button ion-button type="submit" block>Add Record</button>
   </form>
 </ion-content>
