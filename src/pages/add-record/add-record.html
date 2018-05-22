@@ -7,18 +7,19 @@
 
 <ion-content padding>
   <form (ngSubmit)="saveData()">
-    <ion-item>
+    <ion-item padding>
       <ion-label>Date</ion-label>
       <ion-datetime displayFormat="MMM/D/YYYY" pickerFormat="MMMM/D/YYYY" [(ngModel)]="data.date" name="date" required></ion-datetime>
     </ion-item>
 
-    <ion-item>
+    <ion-item padding>
       <ion-label>Type</ion-label>
       <ion-select [(ngModel)]="data.type" name="type" required>
         <ion-option value="Income">Income</ion-option>
         <ion-option value="Expense">Expense</ion-option>
       </ion-select>
     </ion-item>
-    <button ion-button type="submit" block>Add Record</button>
+
+    <button ion-button type="submit" block padding>Add Record</button>
   </form>
 </ion-content>

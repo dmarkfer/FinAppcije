@@ -1,11 +1,16 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>FinAppcije</ion-title>
+    </ion-navbar>
+</ion-header>
+
 <ion-content>
     <ion-list>
         <ion-item-sliding *ngFor="let record of records; let i=index">
             <ion-item nopadding>
                 <p>
-                    <span>{{record.date}}</span><br>
-                    [{{record.type}}] {{record.category}}
-                    {{record.description}}
+                    <span>{{record.date}}</span>
+                    <br> [{{record.type}}] {{record.category}} {{record.description}}
                 </p>
                 <h3 item-end>
                     {{record.amount}}
