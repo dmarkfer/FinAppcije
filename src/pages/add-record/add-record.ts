@@ -10,7 +10,12 @@ import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 })
 export class AddRecordPage {
 
-  data = { date:"", type:"", description:"", amount:0 };
+  data = {
+    date: "",
+    type: "",
+    description: "",
+    amount: 0
+  };
 
 
   constructor(
@@ -20,8 +25,12 @@ export class AddRecordPage {
   ) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AddRecordPage');
+  
+  saveData(): void {
+    this.sqlite.create({
+      name: 'finappcije.db',
+      location: 'default'
+    });
   }
 
 }

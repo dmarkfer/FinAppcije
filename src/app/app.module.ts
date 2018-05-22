@@ -1,4 +1,5 @@
 import { SQLite } from '@ionic-native/sqlite';
+import { Toast } from '@ionic-native/toast';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -36,7 +37,8 @@ import { AddRecordPage } from '../pages/add-record/add-record';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    SQLite
+    SQLite,
+    Toast
   ]
 })
 export class AppModule {}

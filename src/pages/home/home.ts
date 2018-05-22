@@ -17,6 +17,9 @@ export class HomePage {
   chartsTabRoot = ChartsPage;
 
   records: any = [];
+  totalIncome: number = 0;
+  totalExpense: number = 0;
+  balance: number = 0;
 
 
   recordTypes: any = [ 'Income', 'Expense', 'Savings', 'All' ];
@@ -69,8 +72,24 @@ export class HomePage {
         })
         .catch(e => console.log(e));
 
+      db.executeSql('SELECT SUM(amount) AS totalIncome FROM record WHERE type="Income"', {})
+        .then(res => {
+          if(res.rows.length > 0) {
+            this.totalIncome = parseInt(res.rows.item(0).totalIncome);
+            this.balance = this.totalIncome - this.totalExpense;
+          }
+        })
+        .catch(e => console.log(e));
       
-    });
+      db.executeSql('SELECT SUM(amount) AS totalExpense FROM record WHERE type="Expense"', {})
+        .then(res => {
+          if(res.rows.length > 0) {
+            this.totalExpense = parseInt(res.rows.item(0).totalExpense);
+            this.balance = this.totalIncome - this.totalExpense;
+          }
+        });
+
+    }).catch(e => console.log(e));
   }
 
   openAddRecordPage(): void {
