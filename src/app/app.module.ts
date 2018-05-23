@@ -1,4 +1,5 @@
 import { SQLite } from '@ionic-native/sqlite';
+import { Toast } from '@ionic-native/toast';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -11,8 +12,10 @@ import { HomePage } from '../pages/home/home';
 import { RecordsPage } from '../pages/records/records';
 import { ChartsPage } from '../pages/charts/charts';
 import { AddRecordPage } from '../pages/add-record/add-record';
+import { EditRecordPage } from '../pages/edit-record/edit-record';
 import { MockDataProvider } from '../providers/mock-data/mock-data';
 import {ChartsModule} from "ng2-charts";
+
 
 @NgModule({
   declarations: [
@@ -20,7 +23,8 @@ import {ChartsModule} from "ng2-charts";
     HomePage,
     RecordsPage,
     ChartsPage,
-    AddRecordPage
+    AddRecordPage,
+    EditRecordPage
   ],
   imports: [
     BrowserModule,
@@ -33,13 +37,15 @@ import {ChartsModule} from "ng2-charts";
     HomePage,
     RecordsPage,
     ChartsPage,
-    AddRecordPage
+    AddRecordPage,
+    EditRecordPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SQLite,
+    Toast,
     MockDataProvider
   ]
 })

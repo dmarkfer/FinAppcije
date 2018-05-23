@@ -4,7 +4,6 @@ import { AddRecordPage } from './add-record';
 
 @NgModule({
   declarations: [
-    AddRecordPage,
   ],
   imports: [
     IonicPageModule.forChild(AddRecordPage),

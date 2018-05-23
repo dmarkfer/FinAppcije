@@ -6,7 +6,7 @@
 
 
 <ion-content padding>
-  <form (ngSubmit)="saveData()">
+  <form (ngSubmit)="saveRecord()">
     <ion-item padding>
       <ion-label>Date</ion-label>
       <ion-datetime displayFormat="MMM/D/YYYY" pickerFormat="MMMM/D/YYYY" [(ngModel)]="data.date" name="date" required></ion-datetime>
@@ -18,6 +18,37 @@
         <ion-option value="Income">Income</ion-option>
         <ion-option value="Expense">Expense</ion-option>
       </ion-select>
+    </ion-item>
+
+    <ion-item padding>
+      <ion-label>Category</ion-label>
+      <ion-select [(ngModel)]="data.category" name="category" required>
+        
+        <ion-option *ngIf="data.type == 'Income'" value="Paycheck">Paycheck</ion-option>
+        <ion-option *ngIf="data.type == 'Income'" value="Payment">Payment</ion-option>
+        <ion-option *ngIf="data.type == 'Income'" value="Gift">Gift</ion-option>
+
+        <ion-option *ngIf="data.type == 'Expense'" value="Food and Drink">Food and Drink</ion-option>
+        <ion-option *ngIf="data.type == 'Expense'" value="Bills">Bills</ion-option>
+        <ion-option *ngIf="data.type == 'Expense'" value="Houseware">Houseware</ion-option>
+        <ion-option *ngIf="data.type == 'Expense'" value="Car and Transport">Car and Transport</ion-option>
+        <ion-option *ngIf="data.type == 'Expense'" value="Clothes">Clothes</ion-option>
+        <ion-option *ngIf="data.type == 'Expense'" value="Sport">Sport</ion-option>
+        <ion-option *ngIf="data.type == 'Expense'" value="Holiday and Relax">Holiday and Relax</ion-option>
+        <ion-option *ngIf="data.type == 'Expense'" value="Fun">Fun</ion-option>
+
+        <ion-option value="Other">Other</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item padding>
+      <ion-label>Description</ion-label>
+      <ion-input type="text" [(ngModel)]="data.description" name="description" required></ion-input>
+    </ion-item>
+
+    <ion-item padding>
+      <ion-label>Amount</ion-label>
+      <ion-input type="number" [(ngModel)]="data.amount" name="amount" required></ion-input>
     </ion-item>
 
     <button ion-button type="submit" block padding>Add Record</button>

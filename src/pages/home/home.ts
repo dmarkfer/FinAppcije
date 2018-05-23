@@ -1,29 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 
 import { RecordsPage } from '../records/records';
 import { ChartsPage } from '../charts/charts';
 import { AddRecordPage } from '../add-record/add-record';
+import { Tabs } from 'ionic-angular';
 
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage {
+export class HomePage implements OnInit, AfterViewInit {
+
+  @ViewChild("tabs") tabs: Tabs;
 
   recordsTabRoot = RecordsPage;
   chartsTabRoot = ChartsPage;
 
-  records: any = [];
+  /*records: any = [];
+  totalIncome: number = 0;
+  totalExpense: number = 0;
+  balance: number = 0;
 
 
   recordTypes: any = [ 'Income', 'Expense', 'Savings', 'All' ];
   selectedRecordTypes: any;
 
   categories: any = [];
-  selectedCategories: any;
+  selectedCategories: any;*/
 
 
   constructor(
@@ -33,11 +39,15 @@ export class HomePage {
   }
 
 
-  /*ngOnInit(): void {
-    this.selectedRecordTypes = this.recordTypes[3];
-  }*/
+  ngOnInit(): void {
+    //this.selectedRecordTypes = this.recordTypes[3];
+  }
 
-  ionViewDidLoad(): void {
+  ngAfterViewInit(): void {
+    //this.tabs.select(0);
+  }
+
+  /*ionViewDidLoad(): void {
     this.getRecords();
   }
 
@@ -70,9 +80,25 @@ export class HomePage {
         })
         .catch(e => console.log(e));
 
+      db.executeSql('SELECT SUM(amount) AS totalIncome FROM record WHERE type="Income"', {})
+        .then(res => {
+          if(res.rows.length > 0) {
+            this.totalIncome = parseInt(res.rows.item(0).totalIncome);
+            this.balance = this.totalIncome - this.totalExpense;
+          }
+        })
+        .catch(e => console.log(e));
+      
+      db.executeSql('SELECT SUM(amount) AS totalExpense FROM record WHERE type="Expense"', {})
+        .then(res => {
+          if(res.rows.length > 0) {
+            this.totalExpense = parseInt(res.rows.item(0).totalExpense);
+            this.balance = this.totalIncome - this.totalExpense;
+          }
+        });
 
-    });
-  }
+    }).catch(e => console.log(e));
+  }*/
 
   openAddRecordPage(): void {
     this.navCtrl.push(AddRecordPage);
