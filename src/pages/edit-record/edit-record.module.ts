@@ -4,7 +4,6 @@ import { EditRecordPage } from './edit-record';
 
 @NgModule({
   declarations: [
-    EditRecordPage,
   ],
   imports: [
     IonicPageModule.forChild(EditRecordPage),
