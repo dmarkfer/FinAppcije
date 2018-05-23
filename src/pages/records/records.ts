@@ -67,6 +67,7 @@ export class RecordsPage {
                             rowid: res.rows.item(i).rowid,
                             date: res.rows.item(i).date,
                             type: res.rows.item(i).type,
+                            category: res.rows.item(i).category,
                             description: res.rows.item(i).description,
                             amount: res.rows.item(i).amount
                         });
