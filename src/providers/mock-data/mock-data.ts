@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
+
 
 /*
   Generated class for the MockDataProvider provider.
@@ -9,28 +11,47 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class MockDataProvider {
 
-  constructor() {
+  constructor(private sqlite: SQLite) {
     console.log('Hello MockDataProvider Provider');
   }
 
-  getEntriesFromDB(){
-    return [
-      {rowid: 0, date: "22.04.2017", type: "income", category: 4, description: "Paycheck", amount: 7600},
-      {rowid: 1, date: "23.04.2017", type: "expense", category: 2, description: "Režije", amount: 500},
-      {rowid: 2, date: "25.04.2017", type: "expense", category: 1, description: "Stanarina", amount: 1700},
-      {rowid: 3, date: "26.04.2017", type: "income", category: 3, description: "Dividende", amount: 400},
-      {rowid: 4, date: "27.04.2017", type: "expense", category: 2, description: "Namirnice", amount: 300},
-      {rowid: 5, date: "28.04.2017", type: "income", category: 3, description: "Mirko vratio pare", amount: 150},
-    ]
+  getEntriesFromDB() {
+    let records: any = [];
+
+    this.sqlite.create({
+      name: 'finappcije.db',
+      location: 'default'
+    }).then((db: SQLiteObject) => {
+      db.executeSql('CREATE TABLE IF NOT EXISTS record(rowid INTEGER PRIMARY KEY, date TEXT, type TEXT, category TEXT, description TEXT, amount TEXT)', {})
+        .catch(e => console.log(e));
+
+      db.executeSql('SELECT * FROM record ORDER BY rowid DESC', {})
+        .then(res => {
+
+          for (let i = 0; i < res.rows.length; ++i) {
+            records.push({
+              rowid: res.rows.item(i).rowid,
+              date: res.rows.item(i).date,
+              type: res.rows.item(i).type,
+              category: res.rows.item(i).category,
+              description: res.rows.item(i).description,
+              amount: res.rows.item(i).amount
+            });
+          }
+        })
+        .catch(e => console.log(e));
+    }).catch(e => console.log(e));
+
+    return records;
   }
 
-  getCategoriesFromDB(){
+  getCategoriesFromDB() {
     return [
-      {rowid: 4, name: "Posao"},
-      {rowid: 1, name: "Troškovi življenja"},
-      {rowid: 3, name: "Posuđen novac"},
-      {rowid: 2, name: "Fond za auto"},
-      {rowid: 0, name: "Razonoda"}
+      { rowid: 4, name: "Posao" },
+      { rowid: 1, name: "Troškovi življenja" },
+      { rowid: 3, name: "Posuđen novac" },
+      { rowid: 2, name: "Fond za auto" },
+      { rowid: 0, name: "Razonoda" }
     ]
   }
 }
