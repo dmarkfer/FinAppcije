@@ -45,13 +45,11 @@ export class MockDataProvider {
     return records;
   }
 
-  getCategoriesFromDB() {
-    return [
-      { rowid: 4, name: "Posao" },
-      { rowid: 1, name: "Troškovi življenja" },
-      { rowid: 3, name: "Posuđen novac" },
-      { rowid: 2, name: "Fond za auto" },
-      { rowid: 0, name: "Razonoda" }
-    ]
+  getCategoriesIncome(){
+    return ['Paycheck', 'Payment', 'Gift', 'Other']
+  }
+
+  getCategoriesExpense(){
+    return ['Food and Drink', 'Bills', 'Houseware', 'Car and Transport', 'Clothes', 'Sport', 'Holiday and Relax', 'Fun', 'Other']
   }
 }

@@ -47,7 +47,7 @@ export class AddRecordPage {
           console.log(e);
           this.toast.show(e.toString(), '5000', 'center').subscribe(
             toast => {
-              console.log(toast);
+              console.log(toast.toLocaleString());
             }
           );
         });
@@ -55,7 +55,7 @@ export class AddRecordPage {
       console.log(e);
       this.toast.show(e.toString(), '5000', 'center').subscribe(
         toast => {
-          console.log(toast);
+          console.log(toast.toLocaleString());
         }
       );
     });
