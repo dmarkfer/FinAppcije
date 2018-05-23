@@ -12,6 +12,8 @@ import { HomePage } from '../pages/home/home';
 import { RecordsPage } from '../pages/records/records';
 import { ChartsPage } from '../pages/charts/charts';
 import { AddRecordPage } from '../pages/add-record/add-record';
+import { EditRecordPage } from '../pages/edit-record/edit-record';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { AddRecordPage } from '../pages/add-record/add-record';
     HomePage,
     RecordsPage,
     ChartsPage,
-    AddRecordPage
+    AddRecordPage,
+    EditRecordPage
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,8 @@ import { AddRecordPage } from '../pages/add-record/add-record';
     HomePage,
     RecordsPage,
     ChartsPage,
-    AddRecordPage
+    AddRecordPage,
+    EditRecordPage
   ],
   providers: [
     StatusBar,

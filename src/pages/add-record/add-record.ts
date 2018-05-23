@@ -28,7 +28,7 @@ export class AddRecordPage {
   }
 
 
-  saveData(): void {
+  saveRecord(): void {
     this.sqlite.create({
       name: 'finappcije.db',
       location: 'default'

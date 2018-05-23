@@ -6,7 +6,7 @@
 
 
 <ion-content padding>
-  <form (ngSubmit)="saveData()">
+  <form (ngSubmit)="saveRecord()">
     <ion-item padding>
       <ion-label>Date</ion-label>
       <ion-datetime displayFormat="MMM/D/YYYY" pickerFormat="MMMM/D/YYYY" [(ngModel)]="data.date" name="date" required></ion-datetime>
