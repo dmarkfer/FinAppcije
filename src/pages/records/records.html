@@ -5,6 +5,10 @@
 </ion-header>
 
 <ion-content>
+    <ion-toolbar>
+        <ion-title item-end>Balance: {{balance}}</ion-title>
+    </ion-toolbar>
+
     <ion-list>
         <ion-item-sliding *ngFor="let record of records; let i=index">
             <ion-item nopadding>
