@@ -15,6 +15,7 @@ export class EditRecordPage {
     rowid: 0,
     date: "",
     type: "",
+    category: "",
     description: "",
     amount: 0
   };
@@ -45,6 +46,7 @@ export class EditRecordPage {
             this.data.rowid = res.rows.item(0).rowid;
             this.data.date = res.rows.item(0).date;
             this.data.type = res.rows.item(0).type;
+            this.data.category = res.rows.item(0).category;
             this.data.description = res.rows.item(0).description;
             this.data.amount = res.rows.item(0).amount;
           }
@@ -72,8 +74,8 @@ export class EditRecordPage {
       name: 'finappcije.db',
       location: 'default'
     }).then((db: SQLiteObject) => {
-      db.executeSql('UPDATE record SET date=?,type=?,description=?,amount=? WHERE rowid=?',
-        [this.data.date, this.data.type, this.data.description, this.data.amount, this.data.rowid])
+      db.executeSql('UPDATE record SET date=?,type=?,category=?,description=?,amount=? WHERE rowid=?',
+        [this.data.date, this.data.type, this.data.category, this.data.description, this.data.amount, this.data.rowid])
         .then(res => {
           console.log(res);
           this.toast.show('Data updated', '5000', 'center').subscribe(

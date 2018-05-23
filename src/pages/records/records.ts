@@ -56,7 +56,7 @@ export class RecordsPage {
             location: 'default'
         }).then((db: SQLiteObject) => {
 
-            db.executeSql('CREATE TABLE IF NOT EXISTS record(rowid INTEGER PRIMARY KEY, date TEXT, type TEXT, description TEXT, amount TEXT)', {})
+            db.executeSql('CREATE TABLE IF NOT EXISTS record(rowid INTEGER PRIMARY KEY, date TEXT, type TEXT, category TEXT, description TEXT, amount TEXT)', {})
                 .catch(e => console.log(e));
 
             db.executeSql('SELECT * FROM record ORDER BY rowid DESC', {})

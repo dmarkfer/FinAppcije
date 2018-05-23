@@ -19,7 +19,7 @@ export class HomePage implements OnInit, AfterViewInit {
   recordsTabRoot = RecordsPage;
   chartsTabRoot = ChartsPage;
 
-  records: any = [];
+  /*records: any = [];
   totalIncome: number = 0;
   totalExpense: number = 0;
   balance: number = 0;
@@ -29,7 +29,7 @@ export class HomePage implements OnInit, AfterViewInit {
   selectedRecordTypes: any;
 
   categories: any = [];
-  selectedCategories: any;
+  selectedCategories: any;*/
 
 
   constructor(
@@ -47,7 +47,7 @@ export class HomePage implements OnInit, AfterViewInit {
     //this.tabs.select(0);
   }
 
-  ionViewDidLoad(): void {
+  /*ionViewDidLoad(): void {
     this.getRecords();
   }
 
@@ -97,7 +97,7 @@ export class HomePage implements OnInit, AfterViewInit {
         });
 
     }).catch(e => console.log(e));
-  }
+  }*/
 
   openAddRecordPage(): void {
     this.navCtrl.push(AddRecordPage);
