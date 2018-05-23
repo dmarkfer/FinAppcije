@@ -15,17 +15,17 @@ export class MockDataProvider {
     console.log('Hello MockDataProvider Provider');
   }
 
-  getEntriesFromDB() {
+  getEntriesFromDB(): any {
     let records: any = [];
 
-    this.sqlite.create({
+    return this.sqlite.create({
       name: 'finappcije.db',
       location: 'default'
     }).then((db: SQLiteObject) => {
       db.executeSql('CREATE TABLE IF NOT EXISTS record(rowid INTEGER PRIMARY KEY, date TEXT, type TEXT, category TEXT, description TEXT, amount TEXT)', {})
         .catch(e => console.log(e));
 
-      db.executeSql('SELECT * FROM record ORDER BY rowid DESC', {})
+      return db.executeSql('SELECT * FROM record ORDER BY rowid DESC', {})
         .then(res => {
 
           for (let i = 0; i < res.rows.length; ++i) {
@@ -38,11 +38,13 @@ export class MockDataProvider {
               amount: res.rows.item(i).amount
             });
           }
+
+          return records;
         })
         .catch(e => console.log(e));
     }).catch(e => console.log(e));
 
-    return records;
+    //return records;
   }
 
   getCategoriesIncome(){
