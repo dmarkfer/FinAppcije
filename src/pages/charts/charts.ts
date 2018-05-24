@@ -45,6 +45,10 @@ export class ChartsPage {
         this.showChart = true;
     }
 
+    ionViewWillEnter() {
+        this.getNewData();
+    }
+
     getNewData() {
         this.mockData.getEntriesFromDB().then(records => {
             this.transactions = records;

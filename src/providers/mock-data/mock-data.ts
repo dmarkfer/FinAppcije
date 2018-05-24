@@ -35,7 +35,7 @@ export class MockDataProvider {
               type: res.rows.item(i).type,
               category: res.rows.item(i).category,
               description: res.rows.item(i).description,
-              amount: res.rows.item(i).amount
+              amount: parseInt( res.rows.item(i).amount)
             });
           }
 
